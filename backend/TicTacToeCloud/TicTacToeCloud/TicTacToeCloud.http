@@ -1,6 +1,0 @@
-@TicTacToeCloud_HostAddress = http://localhost:5105
-
-GET {{TicTacToeCloud_HostAddress}}/game/
-Accept: application/json
-
-###
