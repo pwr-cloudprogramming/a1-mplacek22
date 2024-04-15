@@ -9,15 +9,15 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["TicTacToeCloud/TicTacToeCloud.csproj", "TicTacToeCloud/"]
-RUN dotnet restore "./TicTacToeCloud/TicTacToeCloud.csproj"
-COPY . .
+COPY ["src/TicTacToeCloud/TicTacToeCloud.csproj", "TicTacToeCloud/"]
+RUN dotnet restore "TicTacToeCloud/TicTacToeCloud.csproj"
+COPY src/TicTacToeCloud/ ./TicTacToeCloud/
 WORKDIR "/src/TicTacToeCloud"
-RUN dotnet build "./TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
