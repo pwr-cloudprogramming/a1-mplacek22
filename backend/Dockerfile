@@ -13,7 +13,7 @@ COPY ["src/TicTacToeCloud/TicTacToeCloud.csproj", "TicTacToeCloud/"]
 RUN dotnet restore "TicTacToeCloud/TicTacToeCloud.csproj"
 COPY src/TicTacToeCloud/ ./TicTacToeCloud/
 WORKDIR "/src/TicTacToeCloud"
-RUN dotnet build "TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "TicTacToeCloud.csproj" -c $BUILD_CONFIGURATION -o /app/build --no-cache
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
