@@ -20,4 +20,4 @@ services:
       - tictactoe_net
 
 networks:
-  tictacnet:
+  tictactoe_net:
