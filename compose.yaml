@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  ticback:
+    image: ticback:latest
+    container_name: ticback
+    ports:
+      - "8080:8080"
+    networks:
+      - tictacnet
+
+  ticfront:
+    image: ticfront:latest
+    container_name: ticfront
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ticback
+    networks:
+      - tictacnet
+
+networks:
+  tictacnet:
