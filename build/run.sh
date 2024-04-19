@@ -17,14 +17,20 @@ METADATA_URL="http://169.254.169.254/latest/meta-data"
 IP_V4=$(curl -H "$TOKEN_HEADER" -s $METADATA_URL/public-ipv4)
 
 # Navigate to the directory containing index.js
-cd ~/environment/a1-mplacek22/frontend/src
+cd  /home/ec2-user/a1-mplacek22/frontend/src
 
 # Replace the placeholder <PUBLIC-IP> with the actual public IP in index.js
 sed -i "s|http://<PUBLIC-IP>:8080|http://$IP_V4:8080|g" index.js
 
+#build docker images
+sudo docker rm -f $(sudo docker ps -a -q)
+cd /home/ec2-user/a1-mplacek22/backend/
+sudo docker build -t tictactoe_back:v1 -t tictactoe_back:latest .
+cd /home/ec2-user/a1-mplacek22/frontend/
+sudo docker build -t tictactoe_front:v1 -t tictactoe_front:latest .
 
 # Navigate to the directory containing Docker Compose file
-cd ~/environment/a1-mplacek22
+cd /home/ec2-user/a1-mplacek22
 
 # Start the containers
 docker-compose up -d

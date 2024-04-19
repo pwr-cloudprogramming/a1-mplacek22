@@ -2,22 +2,22 @@ version: '3.8'
 
 services:
   ticback:
-    image: ticback:latest
-    container_name: ticback
+    image: tictactoe_back:latest
+    container_name: tictactoe_back
     ports:
       - "8080:8080"
     networks:
-      - tictacnet
+      - tictactoe_net
 
   ticfront:
-    image: ticfront:latest
-    container_name: ticfront
+    image: tictactoe_front:latest
+    container_name: tictactoe_front
     ports:
       - "3000:3000"
     depends_on:
-      - ticback
+      - tictactoe_back
     networks:
-      - tictacnet
+      - tictactoe_net
 
 networks:
   tictacnet:
