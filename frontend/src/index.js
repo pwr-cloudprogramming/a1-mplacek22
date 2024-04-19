@@ -2,7 +2,7 @@
 var turn = "";
 var gameOn = false;
 
-const url = 'http://localhost:8080';
+const url = 'http://<PUBLIC-IP>:8080';
 let gameId;
 let playerType;
 
