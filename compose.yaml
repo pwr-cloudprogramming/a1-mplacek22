@@ -7,7 +7,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - tictactoe_net
+      - tictactoenet  # Corrected to match the network definition
 
   ticfront:
     image: tictactoe_front:latest
@@ -15,9 +15,9 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - tictactoe_back
+      - ticback  # This refers correctly to the ticback service
     networks:
-      - tictactoe_net
+      - tictactoenet  # Corrected to match the network definition
 
 networks:
-  tictactoe_net:
+  tictactoenet:  # This definition now matches the network names used in services
