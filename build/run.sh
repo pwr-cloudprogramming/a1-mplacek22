@@ -22,6 +22,9 @@ cd  /home/ec2-user/a1-mplacek22/frontend/src
 # Replace the placeholder <PUBLIC-IP> with the actual public IP in index.js
 sed -i "s|http://<PUBLIC-IP>:8080|http://$IP_V4:8080|g" index.js
 
+# Set environment variable for public IP
+export PUBLIC_IP=$IP_V4
+
 #build docker images
 sudo docker rm -f $(sudo docker ps -a -q)
 cd /home/ec2-user/a1-mplacek22/backend/
