@@ -2,7 +2,7 @@ using TicTacToeCloud.Hubs;
 using TicTacToeCloud.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Configuration.AddEnvironmentVariables();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSignalR();
 
 builder.Services.AddScoped<GameService, GameService>();
-
+var publicIp = Environment.GetEnvironmentVariable("PUBLIC_IP");
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "AllowSpecificOrigin",
@@ -23,8 +23,8 @@ builder.Services.AddCors(options =>
                 "http://127.0.0.1:8080",
                 "http://localhost:3000",
                 "http://127.0.0.1:3000",
-                $"http://{Environment.GetEnvironmentVariable("PUBLIC_IP")}:3000",
-                $"http://{Environment.GetEnvironmentVariable("PUBLIC_IP")}:8080")
+                $"http://{publicIp}:3000",
+                $"http://{publicIp}:8080")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();

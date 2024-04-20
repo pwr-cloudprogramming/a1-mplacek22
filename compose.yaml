@@ -4,10 +4,12 @@ services:
   ticback:
     image: tictactoe_back:latest
     container_name: tictactoe_back
+    environment:
+      - PUBLIC_IP=${PUBLIC_IP}
     ports:
       - "8080:8080"
     networks:
-      - tictactoenet  # Corrected to match the network definition
+      - tictactoenet
 
   ticfront:
     image: tictactoe_front:latest
@@ -15,9 +17,9 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - ticback  # This refers correctly to the ticback service
+      - ticback 
     networks:
-      - tictactoenet  # Corrected to match the network definition
+      - tictactoenet
 
 networks:
-  tictactoenet:  # This definition now matches the network names used in services
+  tictactoenet:
