@@ -23,7 +23,8 @@ builder.Services.AddCors(options =>
                 "http://127.0.0.1:8080",
                 "http://localhost:3000",
                 "http://127.0.0.1:3000",
-                $"http://{Environment.GetEnvironmentVariable("PUBLIC_IP")}:3000")
+                $"http://{Environment.GetEnvironmentVariable("PUBLIC_IP")}:3000",
+                $"http://{Environment.GetEnvironmentVariable("PUBLIC_IP")}:8080")
                    .AllowAnyMethod()
                    .AllowAnyHeader()
                    .AllowCredentials();
