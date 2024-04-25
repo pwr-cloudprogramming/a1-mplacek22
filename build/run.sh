@@ -16,6 +16,12 @@ TOKEN_HEADER="X-aws-ec2-metadata-token: $TOKEN"
 METADATA_URL="http://169.254.169.254/latest/meta-data"
 IP_V4=$(curl -H "$TOKEN_HEADER" -s $METADATA_URL/public-ipv4)
 
+# Navigate to the directory containing index.js
+cd  /home/ec2-user/a1-mplacek22/frontend/src
+
+# Replace the placeholder <PUBLIC-IP> with the actual public IP in index.js
+sed -i "s|http://<PUBLIC-IP>:8080|http://$IP_V4:8080|g" index.js
+
 # Set environment variable for public IP
 export PUBLIC_IP=$IP_V4
 

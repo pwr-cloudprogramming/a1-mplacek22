@@ -14,8 +14,6 @@ services:
   ticfront:
     image: tictactoe_front:latest
     container_name: tictactoe_front
-    environment:
-      - PUBLIC_IP=${PUBLIC_IP}
     ports:
       - "3000:3000"
     depends_on:
