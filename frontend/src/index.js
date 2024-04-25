@@ -1,8 +1,8 @@
 ﻿var turns = [["#", "#", "#"], ["#", "#", "#"], ["#", "#", "#"]];
 var turn = "";
 var gameOn = false;
-
-const url = 'http://<PUBLIC-IP>:8080';
+const publicIP = process.env.PUBLIC_IP;
+const url = 'http://${publicIP}:8080';
 let gameId;
 let playerType;
 
