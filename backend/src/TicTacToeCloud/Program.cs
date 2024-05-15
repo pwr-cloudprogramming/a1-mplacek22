@@ -13,23 +13,23 @@ builder.Services.AddSignalR();
 
 builder.Services.AddScoped<GameService, GameService>();
 var publicIp = Environment.GetEnvironmentVariable("PUBLIC_IP");
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "AllowSpecificOrigin",
-        builder =>
-        {
-            builder.WithOrigins(
-                "http://localhost:8080",
-                "http://127.0.0.1:8080",
-                "http://localhost:3000",
-                "http://127.0.0.1:3000",
-                $"http://{publicIp}:3000",
-                $"http://{publicIp}:8080")
-                   .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .AllowCredentials();
-        });
-});
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy(name: "AllowSpecificOrigin",
+//         builder =>
+//         {
+//             builder.WithOrigins(
+//                 "http://localhost:8080",
+//                 "http://127.0.0.1:8080",
+//                 "http://localhost:3000",
+//                 "http://127.0.0.1:3000",
+//                 $"http://{publicIp}:3000",
+//                 $"http://{publicIp}:8080")
+//                    .AllowAnyMethod()
+//                    .AllowAnyHeader()
+//                    .AllowCredentials();
+//         });
+// });
 
 var app = builder.Build();
 
